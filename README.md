@@ -5,10 +5,10 @@ When given the input of a clothing/fashion item , It can detect and display what
 
 ## Requirements
 
-1. Python 3 
-2. TensorFlow
-3. Numpy
-4. matplotlib
+1. Python - 3.7.7 
+2. TensorFlow - 2.0.0
+3. Numpy - 1.18.4
+4. matplotlib - 3.2.1
 
 The program wont work if these libraries are not installed.
 
