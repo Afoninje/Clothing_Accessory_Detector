@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow import keras
-import numpy as numpy
+import numpy as np
 import matplotlib.pyplot as plt
 
 #Get data from the fashion_mnist library
@@ -39,10 +39,27 @@ model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=
 #verbose = disable the command to keep printing values
 model.fit(train_images , train_labels , epochs=5,verbose=0)
 
-#Get the output
-
+#Output of the accuracy of the whole test_Data
+#verbose = disable the command to keep printing values
 loss , accuracy = model.evaluate(test_images,test_labels, batch_size=10000,verbose=0)
 print(accuracy)
+
+#Create a list to store the results of the predicted images
+prediction = model.predict(test_images)
+
+#Display the first five predictions
+
+for i in range(5):
+    #Create the grid to display the image
+    plt.grid(False)
+    #Plot the image to a graph in black and white format
+    plt.imshow(test_images[i], cmap=plt.cm.binary)
+    #Set the x-label to the actual piece of clothing it is meant to be
+    plt.xlabel("Actual Clothing Item: "+class_names[test_labels[i]])
+    #Set the title of the graph to the piece of clothing we predicted
+    plt.title("Predicted Clothing Item: "+class_names[np.argmax(prediction[i])])
+    #Show the graph with the image
+    plt.show()
 
 
 
